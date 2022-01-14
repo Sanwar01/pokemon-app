@@ -11,9 +11,11 @@ export const GET_POKEMON_INFO = gql`
       maxHP
       maxCP
       attacks {
+        fast {
+          name
+        }
         special {
           name
-          damage
         }
       }
     }
