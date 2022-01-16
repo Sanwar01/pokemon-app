@@ -10,8 +10,18 @@ const App = () => {
   const [pokemonNumber, setPokemonNumber] = useState('001');
 
   const previousPokemon = () => {
-    console.info(parseInt(pokemonNumber) - 1);
-    // setPokemonNumber(parseInt(pokemonNumber,) - 1);
+    // convert pokemon number to integer and decrement
+    let nextPokemonNumber = parseInt(pokemonNumber) - 1;
+
+    // based on the length of the pokemon number which is now an integer, add leading zeros to the number
+    let length = nextPokemonNumber.toString().length;
+
+    if (length === 1 || length === 2)
+      nextPokemonNumber = nextPokemonNumber.toString().padStart(3, '0');
+    else if (length === 3);
+    nextPokemonNumber = nextPokemonNumber.toString();
+
+    setPokemonNumber(nextPokemonNumber);
   };
 
   const nextPokemon = () => {
@@ -21,19 +31,10 @@ const App = () => {
     // based on the length of the pokemon number which is now an integer, add leading zeros to the number
     let length = nextPokemonNumber.toString().length;
 
-    switch (length) {
-      case 1:
-        nextPokemonNumber = nextPokemonNumber.toString().padStart(3, '0'); 
-        break;
-      case 2:
-        nextPokemonNumber = nextPokemonNumber.toString().padStart(3, '0'); 
-        break;
-      case 3:
-        nextPokemonNumber = nextPokemonNumber.toString();
-        break;
-      default:
-        break;
-    }
+    if (length === 1 || length === 2)
+      nextPokemonNumber = nextPokemonNumber.toString().padStart(3, '0');
+    else if (length === 3);
+    nextPokemonNumber = nextPokemonNumber.toString();
 
     setPokemonNumber(nextPokemonNumber);
   };
@@ -61,9 +62,11 @@ const App = () => {
             .map((filteredPokemon) => (
               <PokemonCard key={filteredPokemon.id} pokemon={filteredPokemon} />
             ))}
-        <button className="next-pokemon-btn" onClick={nextPokemon}>
-          &#8250;
-        </button>
+        {pokemonNumber !== '151' && (
+          <button className="next-pokemon-btn" onClick={nextPokemon}>
+            &#8250;
+          </button>
+        )}
       </div>
     </div>
   );
