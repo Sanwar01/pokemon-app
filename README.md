@@ -1,4 +1,28 @@
-# Getting Started with Create React App
+# Pokemon App
+
+This project is a simple front-end application, using React and GraphQL using the public [Pokemon GraphQL api](https://graphql-pokemon2.vercel.app)
+
+## Features
+
+- Displays Pokemon details e.g. mage, numeric ID (001 - 151), fast and slow attacks and resistances / weaknesses.
+- Navigation between different pokemon using previous or next buttons.
+
+## Reflection
+
+Familiarised myself with the GraphQL api by testing the api in the playground before starting. I started the process by using the `create-react-app` boilerplate, then adding `scss` for styling.
+
+One of the main challenges i ran into was trying to navigate from one pokemon to another pokemon by using the `ID` which was in the requirement but by testing the api beforehand i found out the `ID` was not in the format of `001` but infact this format `UG9rZW1vbjowMDE=`.
+
+Also I couldn't pass `number` as request parameter into the graphql query to retrieve the data for that pokemon because it only required `$first` for the `Fetch Pokémons` operation. I then tested the `Fetch single Pokémon` operation and the request parameters that had were `id` and `name` so i couldnt use that either.
+
+So I opted to store the all 151 pokemons in the app state and filter the pokemons by the pokemon number which would be stored also in the app state. The pokemon number would increment or decrement based on the two buttons you click which are `previous` or `next`.
+
+## Improvements
+- Store the colors of each type and use that for the different types e.g. water will be blue, fire type will be red/orange etc.
+- Migrate from scss to styled components
+- Make it responsive
+
+## Installation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
