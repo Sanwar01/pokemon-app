@@ -18,10 +18,11 @@ Also I couldn't pass `number` as request parameter into the graphql query to ret
 So I opted to store the all 151 pokemons in the app state and filter the pokemons by the pokemon number which would be stored also in the app state. The pokemon number would increment or decrement based on the two buttons you click which are `previous` or `next`.
 
 ## Improvements
+
 - Store the colors of each type and use that for the different types e.g. water will be blue, fire type will be red/orange etc.
 - Migrate from scss to styled components
 - Make it responsive
-
+- Testing react component
 ## Installation
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
