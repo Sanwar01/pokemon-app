@@ -23,13 +23,13 @@ const pokemonCard = ({ pokemon }) => {
         ))}
       </div>
       <p>Resistance</p>
-      <div className="pokemon-fast-attacks">
+      <div className="pokemon-resistance">
         {pokemon.resistant.slice().map((resistant) => (
           <span key={`${resistant}`}>{resistant}</span>
         ))}
       </div>
       <p>Weaknesses</p>
-      <div className="pokemon-fast-attacks">
+      <div className="pokemon-weaknesses">
         {pokemon.weaknesses.slice().map((weaknesses) => (
           <span key={`${weaknesses}`}>{weaknesses}</span>
         ))}

@@ -39,8 +39,8 @@ const App = () => {
     setPokemonNumber(nextPokemonNumber);
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error</p>;
+  if (loading) return <div className="loader" />;
+  if (error) return <p className="error">Error</p>;
 
   return (
     <div className="App">
