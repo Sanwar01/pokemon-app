@@ -5,6 +5,7 @@ export const GET_POKEMON_INFO = gql`
     pokemons(first: $first) {
       id
       name
+      number
       image
       resistant
       weaknesses

@@ -1,17 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from '@apollo/client';
 import PokemonCard from './components/PokemonCard';
 import { GET_POKEMON_INFO } from './graphql/getPokemons';
 
 const App = () => {
   const { data, loading, error } = useQuery(GET_POKEMON_INFO, {
-    variables: { first: 1 },
+    variables: { first: 151 },
   });
+  const [pokemonNumber, setPokemonNumber] = useState('001');
 
-  console.log(data);
+  const previousPokemon = () => {
+    console.info(parseInt(pokemonNumber) - 1);
+    // setPokemonNumber(parseInt(pokemonNumber,) - 1);
+  };
 
-  const previousPokemon = () => {};
-  const nextPokemon = () => {};
+  const nextPokemon = () => {
+    // convert pokemon number to integer and increment
+    let nextPokemonNumber = parseInt(pokemonNumber) + 1;
+
+    // based on the length of the pokemon number which is now an integer, add leading zeros to the number
+    let length = nextPokemonNumber.toString().length;
+
+    switch (length) {
+      case 1:
+        nextPokemonNumber = nextPokemonNumber.toString().padStart(3, '0'); 
+        break;
+      case 2:
+        nextPokemonNumber = nextPokemonNumber.toString().padStart(3, '0'); 
+        break;
+      case 3:
+        nextPokemonNumber = nextPokemonNumber.toString();
+        break;
+      default:
+        break;
+    }
+
+    setPokemonNumber(nextPokemonNumber);
+  };
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error</p>;
@@ -23,14 +48,19 @@ const App = () => {
       </header>
 
       <div className="pokemon-container">
-        <button className="previous-pokemon-btn" onClick={previousPokemon}>
-          &#8249;
-        </button>
+        {pokemonNumber !== '001' && (
+          <button className="previous-pokemon-btn" onClick={previousPokemon}>
+            &#8249;
+          </button>
+        )}
 
         {data &&
-          data.pokemons.map((pokemon) => (
-            <PokemonCard key={pokemon.id} pokemon={pokemon} />
-          ))}
+          // data.pokemons.map((pokemon) => (
+          data.pokemons
+            .filter((pokemon) => pokemon.number === pokemonNumber)
+            .map((filteredPokemon) => (
+              <PokemonCard key={filteredPokemon.id} pokemon={filteredPokemon} />
+            ))}
         <button className="next-pokemon-btn" onClick={nextPokemon}>
           &#8250;
         </button>
