@@ -242,18 +242,29 @@ body {
 }
 
 @media (max-width: 800px) {
-  .container .pokemon {
+  .pokemon-container .pokemon {
     width: 100%;
+  }
+  .pokemon-container .pokemon-weaknesses,
+  .pokemon-fast-attacks,
+  .pokemon-special-attacks,
+  .pokemon-resistance {
+    flex-wrap: wrap;
+    justify-content: flex-start !important;
   }
 }
 
 @media (max-width: 400px) {
-  .container .pokemon-attacks {
+  .pokemon-container .pokemon-weaknesses,
+  .pokemon-fast-attacks,
+  .pokemon-special-attacks,
+  .pokemon-resistance {
     flex-wrap: wrap;
+    justify-content: flex-start !important;
   }
 
-  .container .pokemon-attacks span,
-  .container .pokemon {
+  .pokemon-attacks span,
+  .pokemon-container .pokemon {
     width: 100%;
   }
 }
